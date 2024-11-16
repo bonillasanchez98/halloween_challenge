@@ -1,0 +1,9 @@
+com\monsters\controller\MonsterController.class
+com\monsters\exception\MonsterExceptionHandler.class
+com\monsters\entity\Monster.class
+com\monsters\repository\MonsterRepository.class
+com\monsters\MonstersApplication.class
+com\monsters\service\impl\MonsterServiceImpl.class
+com\monsters\exception\MonsterException.class
+com\monsters\exception\MonsterNotFoundException.class
+com\monsters\service\MonsterService.class

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: halloween-challenge
+  datasource:
+      url: jdbc:postgresql://dpg-cspt6mqj1k6c73ffiog0-a.oregon-postgres.render.com:5432/halloween_challenge_db
+      username: admin
+      password: LO47XJSuTyji7TuqzHCBjwydirRvzey5
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+      format-sql: true
