@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.monsters.entity.Monster;
 import com.monsters.service.MonsterService;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ public class MonsterController {
     private final MonsterService service;
 
     @GetMapping("/monsters")
+    @Operation(summary = "Find all monsters")
     public List<Monster> findMonsters(){
         return service.findMonsters();
     }
@@ -34,11 +36,13 @@ public class MonsterController {
     }
 
     @GetMapping("/monster/{id}")
+    @Operation(summary = "Find monster by id")
     public Monster findMonsterById(@PathVariable("id") Integer id) {
         return service.findMonsterById(id);
     }
 
     @GetMapping("/monster")
+    @Operation(summary = "Find monsters by name")
     public List<Monster> getMonsterByName(@RequestParam("name") String name) {
         return service.findMonsterByName(name);
     }
