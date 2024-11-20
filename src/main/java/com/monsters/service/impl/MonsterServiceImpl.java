@@ -5,6 +5,10 @@ import com.monsters.exception.MonsterNotFoundException;
 import com.monsters.repository.MonsterRepository;
 import com.monsters.service.MonsterService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -52,6 +56,17 @@ public class MonsterServiceImpl implements MonsterService {
     @Override
     public List<Monster> findMonsterByName(String name) {
         return repo.findAllMonsterByName(name);
+    }
+
+    @Override
+    public Page<Monster> findMonsterWithPaginationAndSorting(Integer pageNum, Integer pageSize, String field) {
+        Pageable page = null;
+        if(field != null){
+            page = PageRequest.of(pageNum, pageSize, Sort.Direction.ASC, field);
+        }else {
+            page = PageRequest.of(pageNum, pageSize);
+        }
+       return repo.findAll(page);
     }
 
     @Override

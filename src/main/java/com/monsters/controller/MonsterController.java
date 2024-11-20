@@ -5,6 +5,7 @@ import java.util.List;
 import com.monsters.entity.Monster;
 import com.monsters.service.MonsterService;
 import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,8 +27,10 @@ public class MonsterController {
 
     @GetMapping("/monsters")
     @Operation(summary = "Find all monsters")
-    public List<Monster> findMonsters(){
-        return service.findMonsters();
+    public List<Monster> findMonsters(@RequestParam("pageNum") Integer pageNum,
+                                      @RequestParam("pageSize") Integer pageSize){
+        Page<Monster> page = service.findMonsterWithPaginationAndSorting(pageNum, pageSize, null);
+        return page.getContent();
     }
 
     @PostMapping("/monster")
@@ -45,6 +48,13 @@ public class MonsterController {
     @Operation(summary = "Find monsters by name")
     public List<Monster> getMonsterByName(@RequestParam("name") String name) {
         return service.findMonsterByName(name);
+    }
+    @GetMapping("/pag-and-sort/monsters")
+    @Operation(summary = "Find monsters with pagination and sorting")
+    public Page<Monster> findMonsterPaginationAndSorting(@RequestParam("pageNum") Integer pageNum,
+                                                      @RequestParam("pageSize") Integer pageSize,
+                                                      @RequestParam("field") String field) {
+        return service.findMonsterWithPaginationAndSorting(pageNum, pageSize, field);
     }
 
     @PutMapping("/upd-monster/{id}")
