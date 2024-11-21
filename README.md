@@ -14,9 +14,10 @@ Se uso una arquitectura por capas, donde en la capa de modelo solo se implementa
  - Desplegado en la plataforma https://render.com/
  - Documentacion con Swagger https://halloween-challenge.onrender.com/swagger-ui/index.html#/
   ### Endpoints features
-  - ### Local
+  - ## Local
 Ruta raiz para acceder a los recursos de manera local:
  http://localhost:8080/halloween-challenge
+ </br>
  **Metodos**
 - **GET:** /monsters?pageNum=num&pageSize=num
 - **GET BY ID:** /monster/{id}
@@ -24,12 +25,14 @@ Ruta raiz para acceder a los recursos de manera local:
 - **PUT:** /upd-monster/{id}
 - **DELETE:** /dlt-monster/{id}
 
-** Endpoint para buscar un monstruo por su nombre como parametro: **
+**Endpoint para buscar un monstruo por su nombre como parametro:**
+</br>
 http://localhost:8080/halloween-challenge/monster?name={monsterName}
 
-** Endpoint para buscar un monstro con parametros de paginacion y ordenamiento: ** 
+**Endpoint para buscar un monstro con parametros de paginacion y ordenamiento:**
+</br>
 http://localhost:8080/halloween-challenge/pag-and-sort/monsters?pageNum={num}&pageSize={num}&field={fieldName}
-- #### Remoto
+- ### Remoto
 Ruta raiz para acceder a los recursos de manera remota:
 https://halloween-challenge.onrender.com/halloween-challenge/
 ## Technologies
